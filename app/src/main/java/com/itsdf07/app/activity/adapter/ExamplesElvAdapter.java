@@ -89,14 +89,14 @@ public class ExamplesElvAdapter extends BaseExpandableListAdapter {
         } else {
             itemViewHolder = (GroupViewHolder) convertView.getTag();
         }
-//        convertView.setPadding(0, 10, 0, 0);
+        convertView.setPadding(0, 15, 0, 0);//设置一级菜单的Item间隔
 //        itemViewHolder.ivItemIcon.setImageResource(examplesItemBeanList.get(groupPosition).getItemIcon());
         itemViewHolder.tvItemContent.setText(examplesItemBeanList.get(groupPosition).getItemContent());
         itemViewHolder.tvItemChildCount.setText(examplesItemBeanList.get(groupPosition).getChildren().size() + "");
         if (isExpanded) {
-            convertView.setBackgroundResource(R.drawable.bg_examples_item_group_expanded);
+            itemViewHolder.layoutItem.setBackgroundResource(R.drawable.bg_examples_item_group_expanded);
         } else {
-            convertView.setBackgroundResource(R.drawable.bg_examples_item_group_unexpanded);
+            itemViewHolder.layoutItem.setBackgroundResource(R.drawable.bg_examples_item_group_unexpanded);
         }
         return convertView;
     }
