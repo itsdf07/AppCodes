@@ -1,6 +1,5 @@
 package com.itsdf07.app;
 
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -8,18 +7,48 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import com.itsdf07.app.activity.contracts.MainContracts;
+import com.itsdf07.app.activity.presenter.MainPresenter;
+import com.itsdf07.app.framework.mvp.BaseMvpActivity;
+
+/**
+ * @Description:
+ * @Author itsdf07
+ * @E-Mail 923255742@qq.com
+ * @Github https://github.com/itsdf07
+ * @Date 2019/12/16
+ */
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements
+        MainContracts.IMainView,
+        NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public MainPresenter onInitPresenter() {
+        return new MainPresenter(this);
+    }
+
+    @Override
+    public void onAfterPresenter() {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void onBeforeView() {
+
+    }
+
+    @Override
+    public void onInitView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,6 +69,16 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onAfterView() {
+
+    }
+
+    @Override
+    public MainActivity getSelfActivity() {
+        return this;
     }
 
     @Override
@@ -98,4 +137,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

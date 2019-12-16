@@ -12,6 +12,8 @@ import java.lang.ref.WeakReference;
 /**
  * @Description:
  * @Author itsdf07
+ * @E-Mail 923255742@qq.com
+ * @Github https://github.com/itsdf07
  * @Date 2019/12/16
  */
 public class BaseMvpPresenter<V extends IBaseMvpView> implements IBaseMvpPresenter {
