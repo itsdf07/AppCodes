@@ -1,5 +1,6 @@
 package com.itsdf07.app;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.itsdf07.app.activity.ExamplesActivity;
 import com.itsdf07.app.activity.contracts.MainContracts;
 import com.itsdf07.app.activity.presenter.MainPresenter;
 import com.itsdf07.app.framework.mvp.BaseMvpActivity;
@@ -126,7 +128,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-
+            startActivity(new Intent(this, ExamplesActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

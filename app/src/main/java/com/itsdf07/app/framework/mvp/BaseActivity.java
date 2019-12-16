@@ -58,7 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     /**
-     * 初始化UI控件之后要做的事情
+     * 初始化UI控件之后要做且与Presenter无关的事情，切记，与Presenter无关，因为此时Presenter尚未初始化
      */
     public abstract void onAfterView();
 
