@@ -1,5 +1,6 @@
 package com.itsdf07.app.activity.model;
 
+import com.itsdf07.app.R;
 import com.itsdf07.app.activity.bean.ExamplesItemBean;
 import com.itsdf07.app.activity.contracts.ExamplesContracts;
 
@@ -34,5 +35,21 @@ public class ExamplesModel implements ExamplesContracts.IExamplesModel {
         datas.add(groupData);
         datas.add(groupData);
         return datas;
+    }
+
+    private ExamplesItemBean makeItemDate(){
+        ExamplesItemBean bean = new ExamplesItemBean();
+        bean.setItemContent("网络相关");
+        bean.setItemIcon(R.mipmap.ic_launcher);
+
+        List<ExamplesItemBean> lists = new ArrayList<>();
+        ExamplesItemBean bean1 = new ExamplesItemBean();
+        bean1.setItemContent("网络相关");
+        bean1.setItemIcon(R.mipmap.ic_launcher);
+        lists.add(bean1);
+        lists.add(bean1);
+        lists.add(bean1);
+
+        return bean;
     }
 }
