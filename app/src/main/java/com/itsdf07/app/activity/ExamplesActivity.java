@@ -1,6 +1,7 @@
 package com.itsdf07.app.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
@@ -12,6 +13,8 @@ import com.itsdf07.app.activity.contracts.ExamplesContracts;
 import com.itsdf07.app.activity.presenter.ExamplesPresenter;
 import com.itsdf07.app.framework.mvp.BaseMvpActivity;
 import com.itsdf07.lib.alog.ALog;
+
+import java.util.ArrayList;
 
 /**
  * @Description:
@@ -37,7 +40,6 @@ public class ExamplesActivity extends BaseMvpActivity<ExamplesPresenter> impleme
 
     @Override
     public void onBeforeView() {
-
     }
 
     @Override
@@ -56,7 +58,29 @@ public class ExamplesActivity extends BaseMvpActivity<ExamplesPresenter> impleme
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 ALog.eTag(TAG, "groupPosition:%s,childPosition:%s,id:%s", groupPosition, childPosition, id);
-                return true;
+                switch (groupPosition) {
+                    case 0:
+                        switch (childPosition) {
+                            case 0:
+                                startActivity(new Intent(ExamplesActivity.this, PingActivity.class));
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch (childPosition) {
+                            case 0:
+                                startActivity(new Intent(ExamplesActivity.this, BLEScanActivity.class));
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return false;
             }
         });
     }

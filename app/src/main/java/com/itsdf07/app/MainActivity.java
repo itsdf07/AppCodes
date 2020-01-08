@@ -130,7 +130,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(this, PingActivity.class));
+            startActivity(new Intent(this, ExamplesActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

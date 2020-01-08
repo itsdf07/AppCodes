@@ -20,36 +20,35 @@ public class ExamplesModel implements ExamplesContracts.IExamplesModel {
     @Override
     public List<ExamplesItemBean> makeExamplesList() {
 
-        ExamplesItemBean childrenData = new ExamplesItemBean();
-        childrenData.setItemContent("Ping");
-        childrenData.setItemMark("ping网络是否通畅");
+        ExamplesItemBean childrenDataPing = new ExamplesItemBean();
+        childrenDataPing.setItemContent("Ping");
+        childrenDataPing.setItemMark("ping网络是否通畅");
 
-        List<ExamplesItemBean> childDatas = new ArrayList<>();
-        childDatas.add(childrenData);
-        childDatas.add(childrenData);
+        List<ExamplesItemBean> childDatasNet = new ArrayList<>();
+        childDatasNet.add(childrenDataPing);
+
+        ExamplesItemBean groupDataNet = new ExamplesItemBean();
+        groupDataNet.setItemContent("网络相关");
+        groupDataNet.setChildren(childDatasNet);
+        //---------------------------------------------------
+
+        ExamplesItemBean childrenDataBle = new ExamplesItemBean();
+        childrenDataBle.setItemContent("BLE");
+        childrenDataBle.setItemMark("某蓝牙BLE设备读写数据");
+
+        List<ExamplesItemBean> childDatasDevice = new ArrayList<>();
+        childDatasDevice.add(childrenDataBle);
+
+        ExamplesItemBean groupDataDevice = new ExamplesItemBean();
+        groupDataDevice.setItemContent("设备相关");
+        groupDataDevice.setChildren(childDatasDevice);
+
+        //---------------------------------------------------
 
         List<ExamplesItemBean> datas = new ArrayList<>();
-        ExamplesItemBean groupData = new ExamplesItemBean();
-        groupData.setItemContent("网络相关");
-        groupData.setChildren(childDatas);
-        datas.add(groupData);
-        datas.add(groupData);
+
+        datas.add(groupDataNet);
+        datas.add(groupDataDevice);
         return datas;
-    }
-
-    private ExamplesItemBean makeItemDate(){
-        ExamplesItemBean bean = new ExamplesItemBean();
-        bean.setItemContent("网络相关");
-        bean.setItemIcon(R.mipmap.ic_launcher);
-
-        List<ExamplesItemBean> lists = new ArrayList<>();
-        ExamplesItemBean bean1 = new ExamplesItemBean();
-        bean1.setItemContent("网络相关");
-        bean1.setItemIcon(R.mipmap.ic_launcher);
-        lists.add(bean1);
-        lists.add(bean1);
-        lists.add(bean1);
-
-        return bean;
     }
 }

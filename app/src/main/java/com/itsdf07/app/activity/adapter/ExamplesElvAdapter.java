@@ -127,7 +127,7 @@ public class ExamplesElvAdapter extends BaseExpandableListAdapter {
     //指定位置上的子元素是否可选中
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        return true;
     }
 
     static class GroupViewHolder {
