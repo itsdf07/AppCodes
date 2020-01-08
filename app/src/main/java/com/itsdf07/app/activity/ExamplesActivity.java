@@ -11,6 +11,7 @@ import com.itsdf07.app.activity.adapter.ExamplesElvAdapter;
 import com.itsdf07.app.activity.contracts.ExamplesContracts;
 import com.itsdf07.app.activity.presenter.ExamplesPresenter;
 import com.itsdf07.app.framework.mvp.BaseMvpActivity;
+import com.itsdf07.lib.alog.ALog;
 
 /**
  * @Description:
@@ -47,14 +48,14 @@ public class ExamplesActivity extends BaseMvpActivity<ExamplesPresenter> impleme
         elvExamples.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-//                ALog.eTag(TAG, "groupPosition:%s,id:%s", groupPosition, id);
+                ALog.eTag(TAG, "groupPosition:%s,id:%s", groupPosition, id);
                 return false;
             }
         });
         elvExamples.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-//                ALog.eTag(TAG, "groupPosition:%s,childPosition:%s,id:%s", groupPosition, childPosition, id);
+                ALog.eTag(TAG, "groupPosition:%s,childPosition:%s,id:%s", groupPosition, childPosition, id);
                 return true;
             }
         });
