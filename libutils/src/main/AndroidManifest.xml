@@ -2,6 +2,16 @@
 
     package="com.itsdf07.lib.utils">
 
+    <!--蓝牙权限-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- LE Beacons位置相关权限-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--蓝牙模块 设置为true表示只有支持蓝牙的手机才能安装-->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
