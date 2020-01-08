@@ -26,6 +26,7 @@
         <activity android:name=".activity.ExamplesActivity" />
         <activity android:name=".activity.BLEScanActivity" />
         <activity android:name=".activity.BLEActivity" />
+        <activity android:name=".activity.PingActivity"/>
     </application>
 
 </manifest>

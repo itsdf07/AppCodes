@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.itsdf07.app.activity.BLEScanActivity;
 import com.itsdf07.app.activity.ExamplesActivity;
+import com.itsdf07.app.activity.PingActivity;
 import com.itsdf07.app.activity.contracts.MainContracts;
 import com.itsdf07.app.activity.presenter.MainPresenter;
 import com.itsdf07.app.framework.mvp.BaseMvpActivity;
@@ -129,7 +130,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(this, BLEScanActivity.class));
+            startActivity(new Intent(this, PingActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
