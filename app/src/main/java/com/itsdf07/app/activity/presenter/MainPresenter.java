@@ -3,6 +3,7 @@ package com.itsdf07.app.activity.presenter;
 import com.itsdf07.app.activity.contracts.MainContracts;
 import com.itsdf07.app.activity.model.MainModel;
 import com.itsdf07.app.framework.mvp.presenter.BaseMvpPresenter;
+import com.itsdf07.lib.utils.EquipmentUtils;
 
 /**
  * @Description:
@@ -26,4 +27,8 @@ public class MainPresenter extends BaseMvpPresenter<MainContracts.IMainView> imp
     }
 
 
+    @Override
+    public String getEquipmentInfo() {
+        return iMainModel.equipmentInfo(getView().getSelfActivity());
+    }
 }

@@ -1,6 +1,7 @@
 package com.itsdf07.app.activity.contracts;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.itsdf07.app.framework.mvp.model.IBaseMvpModel;
 import com.itsdf07.app.framework.mvp.presenter.IBaseMvpPresenter;
@@ -18,9 +19,17 @@ public interface MainContracts {
     }
 
     interface IMainPresenter extends IBaseMvpPresenter {
+        /**
+         * 获取设备的相关信息
+         *
+         * @return
+         */
+        String getEquipmentInfo();
     }
 
     interface IMainModel extends IBaseMvpModel {
+
+        String equipmentInfo(Context context);
 
     }
 }

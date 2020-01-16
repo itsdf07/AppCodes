@@ -9,6 +9,7 @@ import com.itsdf07.lib.net.okhttp3.OkBaseBean;
 import com.itsdf07.lib.net.okhttp3.OkHttp3CallbackImpl;
 import com.itsdf07.lib.net.okhttp3.OkHttp3Utils;
 import com.itsdf07.lib.net.okhttp3.RequestInfo;
+import com.itsdf07.lib.utils.EquipmentUtils;
 import com.itsdf07.lib.utils.Tools2DeviceInfo;
 
 import org.json.JSONArray;
@@ -181,7 +182,7 @@ public class PingModel implements PingContracts.IPingModel {
                 data.put("imei", IMEI_2);
                 data.put("provider", "2");
                 data.put("os", "1");
-                data.put("osVersion", Tools2DeviceInfo.getInstance().getVersionRelease() + "-" + Tools2DeviceInfo.getInstance().getModel());
+                data.put("osVersion", EquipmentUtils.getSystemRelease() + "-" + EquipmentUtils.getSystemModel());
                 data.put("netType", "4");
                 data.put("host", map.getValue().get("host"));
                 data.put("nextHost", map.getValue().get("nextHost"));

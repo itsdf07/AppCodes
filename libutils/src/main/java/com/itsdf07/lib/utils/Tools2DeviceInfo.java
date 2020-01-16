@@ -5,6 +5,9 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 /**
  * @Description: 获取设备信息的工具，使用静态内部类的方式实现单例模式
  * @Author itsdf07
@@ -41,7 +44,7 @@ public class Tools2DeviceInfo {
      * 其中扣掉了导航栏(返回键+Home键+Menu键)的高度(默认是126px)
      *
      * @param context
-     * @return [widthPixels, heightPixels],如 [1080,1794]
+     * @return 设备的分辨率:px<br/> [widthPixels, heightPixels],如 [1080,1794]
      */
     public int[] getScreenPixels(Context context) {
         int[] pixels = new int[2];
@@ -98,7 +101,10 @@ public class Tools2DeviceInfo {
     }
 
     /**
-     * 获取设备的唯一标识， 需要 “android.permission.READ_Phone_STATE”权限
+     * 获取设备IMEI， 需要 “android.permission.READ_PHONE_STATE”权限
+     *
+     * @param context
+     * @return 设备IMEI
      */
     public String getIMEI(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -109,177 +115,25 @@ public class Tools2DeviceInfo {
             return deviceId;
         }
     }
-    /* ------------------- BOARD 主板 ------------------- */
 
     /**
-     * @return 主板名称
+     * @param context
+     * @return 设备IMEI 2号
      */
-    public String getBoard() {
-        return android.os.Build.BOARD;
+    public String getIMEI_2(Context context) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        Class clazz = tm.getClass();
+        try {
+            Method getImei = clazz.getDeclaredMethod("getImei", int.class);
+            return getImei.invoke(tm, 1).toString();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
-
-    /**
-     * @return 系统引导程序版本号
-     */
-    public String getBootLoader() {
-        return android.os.Build.BOOTLOADER;
-    }
-
-    /*------------- BRAND 运营商  ------------------------*/
-    // phoneInfo += ", CPU_ABI2: " + android.os.Build.CPU_ABI2;
-
-    /**
-     * @return 品牌
-     */
-    public String getBrand() {
-        return android.os.Build.BRAND;
-    }
-
-    public String getCPU_ABI() {
-        return android.os.Build.CPU_ABI;
-    }
-
-    /*------------------ DEVICE 驱动 ----------------------*/
-
-    /**
-     * @return 设备驱动
-     */
-    public String getDevice() {
-        return android.os.Build.DEVICE;
-    }
-
-    /*------------------ DISPLAY 显示 ----------------------*/
-
-    /**
-     * @return 一个构建ID字符串意味着显示给用户
-     */
-    public String getDisplay() {
-        return android.os.Build.DISPLAY;
-    }
-
-    /*--------------------- 指纹 -----------------*/
-
-    /**
-     * @return 一个字符串, 唯一地标识此构建
-     */
-    public String getFingerprint() {
-        return android.os.Build.FINGERPRINT;
-    }
-
-    /*-------------- HARDWARE 硬件  -----------------*/
-
-    /**
-     * 硬件的名称(从内核命令行或/ proc)。
-     *
-     * @return 硬件的名称
-     */
-    public String getHardware() {
-        return android.os.Build.HARDWARE;
-    }
-
-    public String getHost() {
-        return android.os.Build.HOST;
-    }
-
-    public String getId() {
-        return android.os.Build.ID;
-    }
-
-    /*------------------  MANUFACTURER 生产厂家  --------------*/
-
-    /**
-     * @return 手机制造商
-     */
-    public String getManufacturer() {
-        return android.os.Build.MANUFACTURER;
-    }
-
-    /*------------------------MODEL 机型  ****************/
-
-    /**
-     * @return 手机型号
-     */
-    public String getModel() {
-        return android.os.Build.MODEL;
-    }
-
-//    /**
-//     * @return IMEI
-//     */
-//    public String getIMEI(Context context) {
-//        String value = getTelephonyManager(context).getDeviceId();
-//        return value;
-//    }
-
-    /**
-     * @return 产品名称
-     */
-    public String getProduct() {
-        return android.os.Build.PRODUCT;
-    }
-
-    public String getRadio() {
-        return android.os.Build.RADIO;
-    }
-
-    public String getTags() {
-        return android.os.Build.TAGS;
-    }
-
-    public long getTime() {
-        return android.os.Build.TIME;
-    }
-
-    /**
-     * @return 构建的类型, 如“用户”或“eng”。
-     */
-    public String getType() {
-        return android.os.Build.TYPE;
-    }
-
-    public String getUser() {
-        return android.os.Build.USER;
-    }
-
-    /*-------------------  VERSION.RELEASE 固件版本  -----------*/
-
-    /**
-     * @return 系统版本号
-     */
-    public String getVersionRelease() {
-        return android.os.Build.VERSION.RELEASE;
-    }
-
-    /**
-     * @return 开发代号 REL
-     */
-    public String getVersionCodeName() {
-        return android.os.Build.VERSION.CODENAME;
-    }
-
-    /*----------------VERSION.SDK SDK版本  --------------------*/
-
-    /**
-     * @return SDK版本号
-     */
-    public String getVersionSDK() {
-        return android.os.Build.VERSION.SDK;
-    }
-
-    /**
-     * @return SDK版本号
-     */
-    public int getVersionSDK_INF() {
-        return android.os.Build.VERSION.SDK_INT;
-    }
-
-    /*-----------  VERSION.INCREMENTAL 基带版本 ---------------*/
-
-    /**
-     * @return 基带版本
-     */
-    public String getIncremental() {
-        return android.os.Build.VERSION.INCREMENTAL;
-    }
-
 }

@@ -11,10 +11,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import com.itsdf07.app.activity.BLEScanActivity;
 import com.itsdf07.app.activity.ExamplesActivity;
-import com.itsdf07.app.activity.PingActivity;
 import com.itsdf07.app.activity.contracts.MainContracts;
 import com.itsdf07.app.activity.presenter.MainPresenter;
 import com.itsdf07.app.framework.mvp.BaseMvpActivity;
@@ -30,6 +29,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
         MainContracts.IMainView,
         NavigationView.OnNavigationItemSelectedListener {
 
+    private TextView tvEquipmengInfo;
 
     @Override
     public MainPresenter onInitPresenter() {
@@ -38,7 +38,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
 
     @Override
     public void onAfterPresenter() {
-
+        tvEquipmengInfo.setText(presenter.getEquipmentInfo());
     }
 
     @Override
@@ -73,6 +73,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        tvEquipmengInfo = (TextView) findViewById(R.id.tv_equipment_info);
     }
 
     @Override

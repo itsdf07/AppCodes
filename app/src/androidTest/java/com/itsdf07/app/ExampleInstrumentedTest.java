@@ -3,6 +3,9 @@ package com.itsdf07.app;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
+
+import com.itsdf07.lib.utils.EquipmentUtils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,5 +25,11 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.itsdf07.app", appContext.getPackageName());
+    }
+
+    @Test
+    public void getEquipmentInfo() throws Exception {
+        Log.e("aso","单元测试日志输出");
+        assertEquals("result:",  EquipmentUtils.getSystemHardware() + "\n" + EquipmentUtils.getSystemBoard());
     }
 }
