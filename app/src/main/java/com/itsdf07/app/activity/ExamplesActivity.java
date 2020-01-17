@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.itsdf07.app.R;
+import com.itsdf07.app.LifeCycleActivity;
 import com.itsdf07.app.activity.adapter.ExamplesElvAdapter;
 import com.itsdf07.app.activity.contracts.ExamplesContracts;
 import com.itsdf07.app.activity.presenter.ExamplesPresenter;
 import com.itsdf07.app.framework.mvp.BaseMvpActivity;
 import com.itsdf07.lib.alog.ALog;
-
-import java.util.ArrayList;
 
 /**
  * @Description:
@@ -72,6 +71,15 @@ public class ExamplesActivity extends BaseMvpActivity<ExamplesPresenter> impleme
                         switch (childPosition) {
                             case 0:
                                 startActivity(new Intent(ExamplesActivity.this, BLEScanActivity.class));
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (childPosition) {
+                            case 0:
+                                startActivity(new Intent(ExamplesActivity.this, LifeCycleActivity.class));
                                 break;
                             default:
                                 break;

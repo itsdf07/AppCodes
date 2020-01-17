@@ -45,10 +45,24 @@ public class ExamplesModel implements ExamplesContracts.IExamplesModel {
 
         //---------------------------------------------------
 
+        ExamplesItemBean childrenDataActivityLifeCycle = new ExamplesItemBean();
+        childrenDataActivityLifeCycle.setItemContent("Activity生命周期");
+        childrenDataActivityLifeCycle.setItemMark("验证Activity的生命周期");
+
+        List<ExamplesItemBean> childDatasOther = new ArrayList<>();
+        childDatasOther.add(childrenDataActivityLifeCycle);
+
+        ExamplesItemBean groupDataOther = new ExamplesItemBean();
+        groupDataOther.setItemContent("其他");
+        groupDataOther.setChildren(childDatasOther);
+
+        //---------------------------------------------------
+
         List<ExamplesItemBean> datas = new ArrayList<>();
 
         datas.add(groupDataNet);
         datas.add(groupDataDevice);
+        datas.add(groupDataOther);
         return datas;
     }
 }
